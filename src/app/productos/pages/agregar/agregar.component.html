@@ -1,0 +1,54 @@
+<h1 class="mt-5">Agregar producto</h1>
+<hr>
+
+<form [formGroup]="miFormulario">
+    <div class="row g-3 align-items-center mb-3">
+        <div class="col-auto">
+            <label 
+                class="col-form-label"
+                formControlName="nombre">Nombre:</label>
+        </div>
+
+        <div class="col-auto">
+            <label class="form-control"></label>
+        </div>
+
+        <div class="col-auto">
+            <span error-msg
+                  [mensaje]="texto1"
+                  [color]="color"
+                  [valido]="!tieneError('nombre')"><!--mando un valor booleano a la propiedad que esta en la directiva-->
+            </span>
+            <!-- [color]="colorQuequiero"  color apunta a la propiedad de la clase-->
+            <!-- mensaje ="Debe ingresar este campo" -->
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <button class="btn btn-primary"
+                        (click)="cambiarNombre()">
+                    Guardar
+                </button>
+    
+                &nbsp;
+                <button class="btn btn-primary"
+                        (click)="cambiarColor()">
+                    Cambiar Color
+                </button>
+            </div>
+        </div>
+</form>
+
+<h3 class="mt-5">Formulario</h3>
+<pre>Valid: {{miFormulario.valid }}</pre>
+<pre>Valur: {{miFormulario.value | json }}</pre>
+
+
+<div class="row mt-5"
+    *customIf="miFormulario.valid">
+    <div class="col">
+        <div class="alert alert-primary">
+            Todo ok
+        </div>
+    </div>
+</div>
